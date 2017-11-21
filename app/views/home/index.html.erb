@@ -4,7 +4,14 @@
 
     <p>Pretty Awesome, don't you think?</p>
     
-    <%= link_to "Log In", new_user_session_path, class: 'btn btn-success' %>
-    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success' %>
+    <% if user_signed_in? %>
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-success' %>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-success' %>
+
+    <% else %>
+    
+        <%= link_to "Log In", new_user_session_path, class: 'btn btn-success' %>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success' %>
+    <% end %>
 
 </div>
